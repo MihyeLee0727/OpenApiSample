@@ -1,4 +1,4 @@
-package com.example.openapisample.data
+package com.example.openapisample.data.remote
 
 import com.example.openapisample.data.request.SearchRequest
 import com.example.openapisample.data.request.GetDetailRequest

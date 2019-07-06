@@ -1,4 +1,4 @@
-package com.example.openapisample.data
+package com.example.openapisample.data.remote
 
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
@@ -44,7 +44,11 @@ suspend fun <T : Any> Deferred<Response<T>>.awaitData(): DataResponse<T> {
     return if (response.isSuccessful) {
         when (response.code()) {
             HttpURLConnection.HTTP_NO_CONTENT -> DataResponse.Empty()
-            else -> response.body()?.let { DataResponse.Success<T>(it) }
+            else -> response.body()?.let {
+                DataResponse.Success<T>(
+                    it
+                )
+            }
                 ?: let { DataResponse.Empty<T>() }
         }
     } else {

@@ -2,7 +2,7 @@ package com.example.openapisample.presentation.main.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.openapisample.data.DataResponse
+import com.example.openapisample.data.remote.DataResponse
 import com.example.openapisample.presentation.main.interactor.MainInteractor
 import com.example.openapisample.presentation.IClickModel
 import com.example.openapisample.presentation.IEventSender

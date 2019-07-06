@@ -1,6 +1,6 @@
 package com.example.openapisample.presentation.detail.interactor
 
-import com.example.openapisample.data.DataResponse
+import com.example.openapisample.data.remote.DataResponse
 import com.example.openapisample.data.ITwitterRepository
 import com.example.openapisample.data.request.GetDetailRequest
 import com.example.openapisample.data.response.Statuse

@@ -1,7 +1,7 @@
 package com.example.openapisample.di
 
-import com.example.openapisample.data.AuthDataSource
-import com.example.openapisample.data.TweetDataSource
+import com.example.openapisample.data.remote.AuthDataSource
+import com.example.openapisample.data.remote.TweetDataSource
 import com.example.openapisample.data.TwitterMockRepository
 import com.example.openapisample.data.TwitterRepository
 import com.example.openapisample.presentation.detail.interactor.DetailInteractor

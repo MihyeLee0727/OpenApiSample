@@ -1,5 +1,6 @@
 package com.example.openapisample.data
 
+import com.example.openapisample.data.remote.DataResponse
 import com.example.openapisample.data.request.GetTokenRequest
 import com.example.openapisample.data.request.SearchRequest
 import com.example.openapisample.data.request.GetDetailRequest

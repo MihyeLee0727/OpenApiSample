@@ -20,7 +20,7 @@ interface TwitterRemoteService {
      */
     @POST("oauth2/token")
     fun getTokenAsync(
-        @Header("Authorization") token: String,
+        @Header("Authorization") key: String,
         @Header("Content-Type") contentType: String,
         @Body body: GrantTypeRequest
     ) : Deferred<Response<GetTokenResponse>>

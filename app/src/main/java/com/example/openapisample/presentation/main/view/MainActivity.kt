@@ -1,6 +1,7 @@
 package com.example.openapisample.presentation.main.view
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -22,6 +23,12 @@ import com.example.openapisample.presentation.observe
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        fun start(context: Context) {
+            context.startActivity(Intent(context, MainActivity::class.java))
+        }
+    }
 
     private val adapter = MainAdapter()
     private lateinit var binding: ActivityMainBinding

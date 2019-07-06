@@ -4,9 +4,9 @@ import com.example.openapisample.data.DataResponse
 import com.example.openapisample.data.ITwitterRepository
 import com.example.openapisample.data.request.SearchRequest
 import com.example.openapisample.data.response.SearchResponse
-import com.example.openapisample.interactor.handleFail
-import com.example.openapisample.interactor.mapper.TweetMapper
-import com.example.openapisample.interactor.model.Tweet
+import com.example.openapisample.presentation.common.interactor.handleFail
+import com.example.openapisample.presentation.common.interactor.mapper.TweetMapper
+import com.example.openapisample.presentation.common.interactor.model.Tweet
 
 class MainInteractor(
     private val repo: ITwitterRepository

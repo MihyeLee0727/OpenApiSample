@@ -1,9 +1,9 @@
-package com.example.openapisample.interactor.mapper
+package com.example.openapisample.presentation.common.interactor.mapper
 
 import com.example.openapisample.data.response.SearchResponse
 import com.example.openapisample.data.response.Statuse
-import com.example.openapisample.interactor.model.Tweet
-import com.example.openapisample.interactor.model.UserInfo
+import com.example.openapisample.presentation.common.interactor.model.Tweet
+import com.example.openapisample.presentation.common.interactor.model.UserInfo
 
 object TweetMapper {
     fun asTweetList(source: SearchResponse) = source.statuses?.map {

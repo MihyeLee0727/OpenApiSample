@@ -1,4 +1,4 @@
-package com.example.openapisample.interactor.model
+package com.example.openapisample.presentation.common.interactor.model
 
 class UserInfo(
     val id: Long,

@@ -4,8 +4,8 @@ import com.example.openapisample.data.DataResponse
 import com.example.openapisample.data.ITwitterRepository
 import com.example.openapisample.data.request.GetTokenRequest
 import com.example.openapisample.data.response.GetTokenResponse
-import com.example.openapisample.interactor.handleFail
-import com.example.openapisample.interactor.model.Token
+import com.example.openapisample.presentation.common.interactor.handleFail
+import com.example.openapisample.presentation.common.interactor.model.Token
 
 class IntroInteractor(
     private val repo: ITwitterRepository

@@ -1,6 +1,6 @@
 package com.example.openapisample.presentation.main.mapper
 
-import com.example.openapisample.interactor.model.Tweet
+import com.example.openapisample.presentation.common.interactor.model.Tweet
 import com.example.openapisample.presentation.IEventSender
 import com.example.openapisample.presentation.main.viewmodel.item.TweetItemViewModel
 

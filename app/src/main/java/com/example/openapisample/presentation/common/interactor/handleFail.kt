@@ -1,4 +1,4 @@
-package com.example.openapisample.interactor
+package com.example.openapisample.presentation.common.interactor
 
 import com.example.openapisample.data.DataResponse
 

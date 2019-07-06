@@ -3,6 +3,7 @@ package com.example.openapisample.presentation.detail.view
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.openapisample.R
@@ -39,9 +40,17 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
         binding.viewModel = viewModel
+        setSupportActionBar(binding.toolbar)
         initObserver()
 
         viewModel.requestDetail()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun initObserver() {

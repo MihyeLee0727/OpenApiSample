@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                     LinearLayoutManager.VERTICAL
                 )
             )
-            editSearchBox.setOnEditorActionListener { v, actionId, event ->
+            editSearchBox.setOnEditorActionListener { v, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     hideKeyboard(v)
                     this@MainActivity.viewModel.search()

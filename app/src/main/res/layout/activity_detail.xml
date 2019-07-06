@@ -10,113 +10,148 @@
             type="com.example.openapisample.presentation.detail.viewmodel.DetailViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        tools:ignore="ContentDescription">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/profile"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:remoteSrc="@{viewModel.viewState.userProfileImageUrl}"
-            tools:src="@android:drawable/ic_menu_today" />
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@android:color/white"
+            android:elevation="0dp"
+            tools:targetApi="lollipop">
 
-        <TextView
-            android:id="@+id/userName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:maxLines="2"
-            android:text="@{viewModel.viewState.userName}"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/profile"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@id/profile"
-            app:layout_constraintTop_toTopOf="@id/profile"
-            tools:text="dfdfdfdfdfdfdfdfdfdlkjfsl" />
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:expandedTitleGravity="bottom"
+                app:expandedTitleMarginBottom="32dp"
+                app:expandedTitleMarginStart="80dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                app:title="@{viewModel.viewState.userName}"
+                app:toolbarId="@id/toolbar">
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:autoLink="web"
-            android:text="@{viewModel.viewState.contents}"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/profile"
-            tools:text="test 가나다라 가나다라 가나다라마바사아 tteetesttest tteetetesttesttest tteetetesttesttest tteetetesttesttest tteetetesttetest" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="parallax"
+                    app:remoteSrc="@{viewModel.viewState.userProfileBgImageUrl}"
+                    tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:scaleType="fitStart"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/text"
-            app:remoteSrc="@{viewModel.viewState.imageUrl}"
-            app:show="@{viewModel.viewState.hasImage}"
-            tools:src="@android:drawable/gallery_thumb"
-            tools:visibility="visible" />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="1"
+                    app:remoteSrc="@{viewModel.viewState.userProfileImageUrl}"
+                    tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:id="@+id/retweetIcon"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginTop="16dp"
-            android:src="@android:drawable/ic_menu_revert"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image"
-            app:show="@{viewModel.viewState.retweetCount > 0}"
-            tools:visibility="gone" />
+                <androidx.appcompat.widget.Toolbar
+                    android:id='@+id/toolbar'
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel" />
 
-        <TextView
-            android:id="@+id/retweetCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:drawablePadding="8dp"
-            android:includeFontPadding="false"
-            app:layout_constraintBottom_toBottomOf="@id/retweetIcon"
-            app:layout_constraintStart_toEndOf="@id/retweetIcon"
-            app:layout_constraintTop_toTopOf="@id/retweetIcon"
-            app:textFromNumber="@{viewModel.viewState.retweetCount}"
-            tools:text="222"
-            tools:visibility="gone" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <ImageView
-            android:id="@+id/favoriteIcon"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:src="@android:drawable/star_off"
-            android:tint="@color/colorAccent"
-            app:layout_constraintStart_toEndOf="@id/retweetCount"
-            app:layout_constraintTop_toBottomOf="@id/image"
-            app:layout_goneMarginStart="0dp"
-            app:show="@{viewModel.viewState.favoriteCount > 0}" />
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <TextView
-            android:id="@+id/favoriteCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawablePadding="8dp"
-            android:includeFontPadding="false"
-            app:layout_constraintBottom_toBottomOf="@id/favoriteIcon"
-            app:layout_constraintStart_toEndOf="@id/favoriteIcon"
-            app:layout_constraintTop_toTopOf="@id/favoriteIcon"
-            app:textFromNumber="@{viewModel.viewState.favoriteCount}"
-            tools:text="1134" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                tools:ignore="ContentDescription">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:autoLink="web"
+                    android:text="@{viewModel.viewState.contents}"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="test 가나다라 가나다라 가나다라마바사아 tteetesttest tteetetesttesttest tteetetesttesttest tteetetesttesttest tteetetesttetest" />
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/text"
+                    app:remoteSrc="@{viewModel.viewState.imageUrl}"
+                    app:show="@{viewModel.viewState.hasImage}"
+                    tools:src="@android:drawable/gallery_thumb"
+                    tools:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/retweetIcon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@android:drawable/ic_menu_revert"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/image"
+                    app:show="@{viewModel.viewState.retweetCount > 0}"
+                    tools:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/retweetCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:drawablePadding="8dp"
+                    android:includeFontPadding="false"
+                    app:layout_constraintBottom_toBottomOf="@id/retweetIcon"
+                    app:layout_constraintStart_toEndOf="@id/retweetIcon"
+                    app:layout_constraintTop_toTopOf="@id/retweetIcon"
+                    app:textFromNumber="@{viewModel.viewState.retweetCount}"
+                    tools:text="222"
+                    tools:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/favoriteIcon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@android:drawable/star_off"
+                    android:tint="@color/colorAccent"
+                    app:layout_constraintStart_toEndOf="@id/retweetCount"
+                    app:layout_constraintTop_toBottomOf="@id/image"
+                    app:layout_goneMarginStart="0dp"
+                    app:show="@{viewModel.viewState.favoriteCount > 0}" />
+
+                <TextView
+                    android:id="@+id/favoriteCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="8dp"
+                    android:includeFontPadding="false"
+                    app:layout_constraintBottom_toBottomOf="@id/favoriteIcon"
+                    app:layout_constraintStart_toEndOf="@id/favoriteIcon"
+                    app:layout_constraintTop_toTopOf="@id/favoriteIcon"
+                    app:textFromNumber="@{viewModel.viewState.favoriteCount}"
+                    tools:text="1134" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </layout>

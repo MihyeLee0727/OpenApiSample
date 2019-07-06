@@ -21,13 +21,16 @@ fun TextView.setTextFromNumber(number: Number?) {
     text = number.toString()
 }
 
-@BindingAdapter("remoteSrc")
-fun ImageView.setRemoteSrc(url: String?) {
+@BindingAdapter("remoteSrc", "imgCenterCrop", requireAll = false)
+fun ImageView.setRemoteSrc(url: String?, centerCrop: Boolean?) {
     if (url == null || url.isEmpty()) return
 
     Glide.with(context)
         .load(url)
         .transition(DrawableTransitionOptions.withCrossFade())
-        .centerCrop()
+        .apply {
+            if (centerCrop == true)
+                centerCrop()
+        }
         .into(this)
 }

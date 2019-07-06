@@ -71,4 +71,7 @@ dependencies {
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
     // Koin AndroidX Experimental features
     implementation "org.koin:koin-androidx-ext:$koin_version"
+
+    // material component
+    implementation 'com.google.android.material:material:1.0.0'
 }

@@ -8,6 +8,12 @@ const val mockDetail = """{
   "text": "To make room for more expression, we will now count all emojis as equal—including those with gender‍‍‍ and skin t… https://t.co/MkGjXf9aXm",
   "truncated": true,
   "entities": {
+    "media": [
+        {
+            "id": 1,
+            "media_url_https": "https://pbs.twimg.com/profile_banners/2244994945/1498675817"
+        }
+    ],
     "hashtags": [],
     "symbols": [],
     "user_mentions": [],

@@ -1,7 +1,7 @@
 package com.example.openapisample.data.mock
 
 // https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-show-id
-val mockShowDetail = """{
+val mockDetail = """{
   "created_at": "Wed Oct 10 20:19:24 +0000 2018",
   "id": 1050118621198921728,
   "id_str": "1050118621198921728",

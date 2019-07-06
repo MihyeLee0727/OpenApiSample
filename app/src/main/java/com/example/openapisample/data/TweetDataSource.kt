@@ -1,7 +1,7 @@
 package com.example.openapisample.data
 
 import com.example.openapisample.data.request.SearchRequest
-import com.example.openapisample.data.request.ShowDetailRequest
+import com.example.openapisample.data.request.GetDetailRequest
 import com.example.openapisample.data.response.SearchResponse
 import com.example.openapisample.data.response.Statuse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -43,8 +43,8 @@ class TweetDataSource {
         ).awaitData()
     }
 
-    suspend fun showDetail(req: ShowDetailRequest): DataResponse<Statuse> {
-        return service.showDetailAsync(
+    suspend fun getDetail(req: GetDetailRequest): DataResponse<Statuse> {
+        return service.getDetailAsync(
             id = req.id,
             includeEntities = req.includeEntities
         ).awaitData()

@@ -2,10 +2,10 @@ package com.example.openapisample.data
 
 import com.example.openapisample.data.mock.mockGetToken
 import com.example.openapisample.data.mock.mockSearch
-import com.example.openapisample.data.mock.mockShowDetail
+import com.example.openapisample.data.mock.mockDetail
 import com.example.openapisample.data.request.GetTokenRequest
 import com.example.openapisample.data.request.SearchRequest
-import com.example.openapisample.data.request.ShowDetailRequest
+import com.example.openapisample.data.request.GetDetailRequest
 import com.example.openapisample.data.response.GetTokenResponse
 import com.example.openapisample.data.response.SearchResponse
 import com.example.openapisample.data.response.Statuse
@@ -32,10 +32,10 @@ class TwitterMockRepository : ITwitterRepository {
         )
     }
 
-    override suspend fun showDetail(req: ShowDetailRequest): DataResponse<Statuse> {
+    override suspend fun getDetail(req: GetDetailRequest): DataResponse<Statuse> {
         return DataResponse.Success(
             data = gson.fromJson(
-                mockShowDetail,
+                mockDetail,
                 Statuse::class.java
             )
         )

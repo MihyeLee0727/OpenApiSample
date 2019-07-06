@@ -1,6 +1,6 @@
 package com.example.openapisample.data.request
 
-class ShowDetailRequest(
+class GetDetailRequest(
     val id: Long,
     val includeEntities: Boolean = true
 )

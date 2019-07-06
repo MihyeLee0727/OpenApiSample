@@ -41,7 +41,7 @@ interface TwitterRemoteService {
      * https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-show-id
      */
     @GET("$VERSION/statuses/show.json")
-    fun showDetailAsync(
+    fun getDetailAsync(
         @Query("id") id: Long,
         @Query("include_entities") includeEntities: Boolean?
     ) : Deferred<Response<Statuse>>

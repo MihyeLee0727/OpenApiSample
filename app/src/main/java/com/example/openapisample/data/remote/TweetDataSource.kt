@@ -10,13 +10,15 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class TweetDataSource {
+class TweetDataSource(
+    private val tokenManager: IRemoteTokenManager
+) {
 
     private val service by lazy {
         val authInterceptor = Interceptor {
             val newRequest = it.request()
                 .newBuilder()
-                .addHeader("Authorization", "") // TODO apply token
+                .addHeader("Authorization", tokenManager.getToken())
                 .build()
             it.proceed(newRequest)
         }

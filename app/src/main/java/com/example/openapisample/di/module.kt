@@ -4,12 +4,14 @@ import com.example.openapisample.data.remote.AuthDataSource
 import com.example.openapisample.data.remote.TweetDataSource
 import com.example.openapisample.data.TwitterMockRepository
 import com.example.openapisample.data.TwitterRepository
+import com.example.openapisample.presentation.common.interactor.RemoteTokenManager
 import com.example.openapisample.presentation.detail.interactor.DetailInteractor
 import com.example.openapisample.presentation.main.interactor.MainInteractor
 import com.example.openapisample.presentation.detail.viewmodel.DetailViewModel
 import com.example.openapisample.presentation.intro.interactor.IntroInteractor
 import com.example.openapisample.presentation.intro.viewmodel.IntroViewModel
 import com.example.openapisample.presentation.main.viewmodel.MainViewModel
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -20,8 +22,9 @@ enum class DINames {
 }
 
 val dataModule = module {
+    single { RemoteTokenManager(androidContext()) }
     single { AuthDataSource() }
-    single { TweetDataSource() }
+    single { TweetDataSource(tokenManager = get()) }
     single(named(DINames.TwitterRepository.name)) {
         TwitterRepository(
             authDataSource = get(),
@@ -80,7 +83,8 @@ val introSceneModule = module {
     }
     viewModel {
         IntroViewModel(
-            interactor = get()
+            interactor = get(),
+            tokenManager = get()
         )
     }
 }

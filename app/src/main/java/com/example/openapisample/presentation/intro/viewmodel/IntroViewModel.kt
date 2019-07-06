@@ -3,13 +3,15 @@ package com.example.openapisample.presentation.intro.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.openapisample.data.remote.DataResponse
+import com.example.openapisample.presentation.common.interactor.RemoteTokenManager
 import com.example.openapisample.presentation.common.interactor.model.Token
 import com.example.openapisample.presentation.common.viewmodel.MsgPriority
 import com.example.openapisample.presentation.intro.interactor.IntroInteractor
 import kotlinx.coroutines.*
 
 class IntroViewModel(
-    private val interactor: IntroInteractor
+    private val interactor: IntroInteractor,
+    private val tokenManager: RemoteTokenManager
 ) : ViewModel() {
 
     private val _event = IntroEvent()
@@ -46,6 +48,6 @@ class IntroViewModel(
     }
 
     private fun saveToken(token: String) {
-        // TODO
+        tokenManager.setToken(token)
     }
 }

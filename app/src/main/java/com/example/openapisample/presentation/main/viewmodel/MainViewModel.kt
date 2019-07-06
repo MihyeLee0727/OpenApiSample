@@ -3,14 +3,11 @@ package com.example.openapisample.presentation.main.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.openapisample.data.DataResponse
-import com.example.openapisample.interactor.MainInteractor
+import com.example.openapisample.presentation.main.interactor.MainInteractor
 import com.example.openapisample.presentation.IClickModel
 import com.example.openapisample.presentation.IEventSender
 import com.example.openapisample.presentation.main.mapper.TweetItemViewModelMapper
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.isActive
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class MainViewModel(
     private val interactor: MainInteractor
@@ -20,8 +17,12 @@ class MainViewModel(
     private val _event = MainEvent()
     val event: IMainEvent = _event
 
+    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        _event._message.postValue(Pair(MsgPriority.HIGH, throwable.message.orEmpty()))
+    }
+
     fun search() {
-        viewModelScope.launch(Dispatchers.Default) {
+        viewModelScope.launch(Dispatchers.Default + coroutineExceptionHandler) {
             when (val result = interactor.search(viewState.searchKeyword)) {
                 is DataResponse.Success -> {
                     _event._searchResult.postValue(

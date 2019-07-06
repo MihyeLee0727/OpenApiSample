@@ -23,6 +23,7 @@
         <activity
             android:name=".presentation.detail.view.DetailActivity"
             android:screenOrientation="portrait"
+            android:label=""
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity

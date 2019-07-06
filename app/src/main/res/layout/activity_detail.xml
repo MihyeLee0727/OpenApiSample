@@ -120,6 +120,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/retweetIcon"
                     app:layout_constraintStart_toEndOf="@id/retweetIcon"
                     app:layout_constraintTop_toTopOf="@id/retweetIcon"
+                    app:show="@{viewModel.viewState.retweetCount > 0}"
                     app:textFromNumber="@{viewModel.viewState.retweetCount}"
                     tools:text="222"
                     tools:visibility="gone" />
@@ -146,6 +147,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/favoriteIcon"
                     app:layout_constraintStart_toEndOf="@id/favoriteIcon"
                     app:layout_constraintTop_toTopOf="@id/favoriteIcon"
+                    app:show="@{viewModel.viewState.favoriteCount > 0}"
                     app:textFromNumber="@{viewModel.viewState.favoriteCount}"
                     tools:text="1134" />
 

@@ -42,6 +42,8 @@ class IntroActivity : AppCompatActivity() {
     }
 
     private fun showAlertDlg(msg: String) {
-        showSimpleAlertDlg(msg)
+        showSimpleAlertDlg(msg) {
+            finish()
+        }
     }
 }

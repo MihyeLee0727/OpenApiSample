@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -13,8 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.openapisample.R
 import com.example.openapisample.databinding.ActivityMainBinding
 import com.example.openapisample.presentation.IClickModel
+import com.example.openapisample.presentation.common.view.showSimpleAlertDlg
+import com.example.openapisample.presentation.common.view.showToast
+import com.example.openapisample.presentation.common.viewmodel.MsgPriority
+import com.example.openapisample.presentation.detail.view.DetailActivity
 import com.example.openapisample.presentation.main.viewmodel.MainViewModel
-import com.example.openapisample.presentation.main.viewmodel.MsgPriority
 import com.example.openapisample.presentation.main.viewmodel.item.TweetItemClickModel
 import com.example.openapisample.presentation.observe
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -63,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         }
         observe(viewModel.event.message) {
             when (it.first) {
-                MsgPriority.HIGH,
+                MsgPriority.HIGH -> showAlertDlg(it.second)
                 MsgPriority.LOW -> showToast(it.second)
             }
         }
@@ -76,12 +78,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showDetail(clickModel: TweetItemClickModel) {
-        // TODO show detail activity
-        showToast("TODO show detial")
+        DetailActivity.start(this, clickModel.id)
     }
 
-    private fun showToast(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    private fun showAlertDlg(msg: String) {
+        showSimpleAlertDlg(msg)
     }
 
     private fun hideKeyboard(v: View) {

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.openapisample.presentation.detail.viewmodel.DetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:ignore="ContentDescription">
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:remoteSrc="@{viewModel.viewState.userProfileImageUrl}"
+            tools:src="@android:drawable/ic_menu_today" />
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:maxLines="2"
+            android:text="@{viewModel.viewState.userName}"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/profile"
+            app:layout_constraintTop_toTopOf="@id/profile"
+            tools:text="dfdfdfdfdfdfdfdfdfdlkjfsl" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:autoLink="web"
+            android:text="@{viewModel.viewState.contents}"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile"
+            tools:text="test 가나다라 가나다라 가나다라마바사아 tteetesttest tteetetesttesttest tteetetesttesttest tteetetesttesttest tteetetesttetest" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitStart"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text"
+            app:remoteSrc="@{viewModel.viewState.imageUrl}"
+            app:show="@{viewModel.viewState.hasImage}"
+            tools:src="@android:drawable/gallery_thumb"
+            tools:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/retweetIcon"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="16dp"
+            android:src="@android:drawable/ic_menu_revert"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            app:show="@{viewModel.viewState.retweetCount > 0}"
+            tools:visibility="gone" />
+
+        <TextView
+            android:id="@+id/retweetCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:drawablePadding="8dp"
+            android:includeFontPadding="false"
+            app:layout_constraintBottom_toBottomOf="@id/retweetIcon"
+            app:layout_constraintStart_toEndOf="@id/retweetIcon"
+            app:layout_constraintTop_toTopOf="@id/retweetIcon"
+            app:textFromNumber="@{viewModel.viewState.retweetCount}"
+            tools:text="222"
+            tools:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/favoriteIcon"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:src="@android:drawable/star_off"
+            android:tint="@color/colorAccent"
+            app:layout_constraintStart_toEndOf="@id/retweetCount"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            app:layout_goneMarginStart="0dp"
+            app:show="@{viewModel.viewState.favoriteCount > 0}" />
+
+        <TextView
+            android:id="@+id/favoriteCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:includeFontPadding="false"
+            app:layout_constraintBottom_toBottomOf="@id/favoriteIcon"
+            app:layout_constraintStart_toEndOf="@id/favoriteIcon"
+            app:layout_constraintTop_toTopOf="@id/favoriteIcon"
+            app:textFromNumber="@{viewModel.viewState.favoriteCount}"
+            tools:text="1134" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

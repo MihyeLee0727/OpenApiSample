@@ -1,7 +1,7 @@
 package com.example.openapisample.data.mock
 
 // https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets
-val mockSearch = """{
+const val mockSearch = """{
     "statuses": [
     {
         "created_at": "Mon May 06 20:01:29 +0000 2019",
@@ -10,6 +10,12 @@ val mockSearch = """{
         "text": "Today's new update means that you can finally add Pizza Cat to your Retweet with comments! Learn more about this ne… https://t.co/Rbc9TF2s5X",
         "truncated": true,
         "entities": {
+        "media": [
+            {
+                "id": 1,
+                "media_url_https": "https://pbs.twimg.com/profile_banners/2244994945/1498675817"
+            }
+        ],
         "hashtags": [],
         "symbols": [],
         "user_mentions": [],

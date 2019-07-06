@@ -3,17 +3,13 @@ package com.example.openapisample.presentation.main.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.openapisample.presentation.IClickModel
+import com.example.openapisample.presentation.common.viewmodel.ICommonEvent
+import com.example.openapisample.presentation.common.viewmodel.MsgPriority
 import com.example.openapisample.presentation.main.viewmodel.item.TweetItemViewModel
 
-enum class MsgPriority {
-    HIGH,
-    LOW
-}
-
-interface IMainEvent {
+interface IMainEvent : ICommonEvent {
     val searchResult: LiveData<List<TweetItemViewModel>>
     val noResult: LiveData<Unit>
-    val message: LiveData<Pair<MsgPriority, String>>
     val click: LiveData<IClickModel>
 }
 

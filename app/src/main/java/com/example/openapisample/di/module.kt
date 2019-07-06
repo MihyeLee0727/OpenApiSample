@@ -4,7 +4,9 @@ import com.example.openapisample.data.AuthDataSource
 import com.example.openapisample.data.TweetDataSource
 import com.example.openapisample.data.TwitterMockRepository
 import com.example.openapisample.data.TwitterRepository
-import com.example.openapisample.interactor.MainInteractor
+import com.example.openapisample.presentation.detail.interactor.DetailInteractor
+import com.example.openapisample.presentation.main.interactor.MainInteractor
+import com.example.openapisample.presentation.detail.viewmodel.DetailViewModel
 import com.example.openapisample.presentation.main.viewmodel.MainViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -31,7 +33,13 @@ val dataModule = module {
 
 val mainSceneModule = module {
     factory {
-        MainInteractor(repo = get(named(DINames.TwitterMockRepository.name)))
+        MainInteractor(
+            repo = get(
+                named(
+                    DINames.TwitterMockRepository.name
+                )
+            )
+        )
     }
     viewModel {
         MainViewModel(
@@ -41,7 +49,21 @@ val mainSceneModule = module {
 }
 
 val tweetDetailSceneModule = module {
-
+    factory {
+        DetailInteractor(
+            repo = get(
+                named(
+                    DINames.TwitterMockRepository.name
+                )
+            )
+        )
+    }
+    viewModel { (id: Long) ->
+        DetailViewModel(
+            id = id,
+            interactor = get()
+        )
+    }
 }
 
 val appModules = listOf(

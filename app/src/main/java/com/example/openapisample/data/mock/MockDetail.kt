@@ -1,7 +1,7 @@
 package com.example.openapisample.data.mock
 
 // https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-show-id
-val mockDetail = """{
+const val mockDetail = """{
   "created_at": "Wed Oct 10 20:19:24 +0000 2018",
   "id": 1050118621198921728,
   "id_str": "1050118621198921728",
@@ -23,7 +23,6 @@ val mockDetail = """{
       }
     ]
   },
-  "source": "<a href="http://twitter.com" rel="nofollow">Twitter Web Client</a>",
   "in_reply_to_status_id": null,
   "in_reply_to_status_id_str": null,
   "in_reply_to_user_id": null,
@@ -73,7 +72,7 @@ val mockDetail = """{
     "profile_background_color": "null",
     "profile_background_image_url": "null",
     "profile_background_image_url_https": "null",
-    "profile_background_tile": nulll,
+    "profile_background_tile": null,
     "profile_image_url": "null",
     "profile_image_url_https": "https://pbs.twimg.com/profile_images/942858479592554497/BbazLO9L_normal.jpg",
     "profile_banner_url": "https://pbs.twimg.com/profile_banners/6253282/1497491515",
@@ -85,7 +84,7 @@ val mockDetail = """{
     "has_extended_profile": null,
     "default_profile": false,
     "default_profile_image": false,
-    "following": nul,
+    "following": null,
     "follow_request_sent": null,
     "notifications": null,
     "translator_type": "null"

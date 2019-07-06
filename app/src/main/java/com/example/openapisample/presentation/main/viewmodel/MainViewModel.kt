@@ -6,6 +6,7 @@ import com.example.openapisample.data.DataResponse
 import com.example.openapisample.presentation.main.interactor.MainInteractor
 import com.example.openapisample.presentation.IClickModel
 import com.example.openapisample.presentation.IEventSender
+import com.example.openapisample.presentation.common.viewmodel.MsgPriority
 import com.example.openapisample.presentation.main.mapper.TweetItemViewModelMapper
 import kotlinx.coroutines.*
 

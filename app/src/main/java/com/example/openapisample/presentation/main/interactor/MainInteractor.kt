@@ -18,9 +18,9 @@ class MainInteractor(
             )
         )
         return response.getOrNull()?.let {
-            DataResponse.Success(TweetMapper.asTweet(it))
+            DataResponse.Success(TweetMapper.asTweetList(it))
         } ?: let {
-            response.handleFail<List<Tweet>, SearchResponse>()
+            response.handleFail<SearchResponse, List<Tweet>>()
         }
     }
 }

@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 @BindingAdapter("show")
 fun View.setShow(show: Boolean?) {
@@ -24,5 +25,9 @@ fun TextView.setTextFromNumber(number: Number?) {
 fun ImageView.setRemoteSrc(url: String?) {
     if (url == null || url.isEmpty()) return
 
-    Glide.with(context).load(url).centerCrop().into(this)
+    Glide.with(context)
+        .load(url)
+        .transition(DrawableTransitionOptions.withCrossFade())
+        .centerCrop()
+        .into(this)
 }

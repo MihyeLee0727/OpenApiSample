@@ -8,6 +8,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.openapisample.R
 import com.example.openapisample.databinding.ActivityMainBinding
 import com.example.openapisample.presentation.IClickModel
@@ -34,6 +36,12 @@ class MainActivity : AppCompatActivity() {
         with(binding) {
             viewModel = this@MainActivity.viewModel
             list.adapter = this@MainActivity.adapter
+            list.addItemDecoration(
+                DividerItemDecoration(
+                    this@MainActivity,
+                    LinearLayoutManager.VERTICAL
+                )
+            )
             editSearchBox.setOnEditorActionListener { v, actionId, event ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     hideKeyboard(v)

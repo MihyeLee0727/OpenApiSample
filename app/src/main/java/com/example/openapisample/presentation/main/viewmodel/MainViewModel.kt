@@ -6,6 +6,7 @@ import com.example.openapisample.data.remote.DataResponse
 import com.example.openapisample.presentation.main.interactor.MainInteractor
 import com.example.openapisample.presentation.IClickModel
 import com.example.openapisample.presentation.IEventSender
+import com.example.openapisample.presentation.common.interactor.getErrorMsg
 import com.example.openapisample.presentation.common.viewmodel.MsgPriority
 import com.example.openapisample.presentation.main.mapper.TweetItemViewModelMapper
 import kotlinx.coroutines.*
@@ -37,7 +38,7 @@ class MainViewModel(
                     _event._message.postValue(Pair(MsgPriority.LOW, "검색 결과가 없습니다."))
                 }
                 is DataResponse.Fail -> {
-                    _event._message.postValue(Pair(MsgPriority.HIGH, result.errorMessage.orEmpty()))
+                    _event._message.postValue(Pair(MsgPriority.HIGH, result.getErrorMsg()))
                 }
             }
         }

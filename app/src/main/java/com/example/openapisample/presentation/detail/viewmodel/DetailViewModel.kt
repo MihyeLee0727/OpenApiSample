@@ -3,6 +3,7 @@ package com.example.openapisample.presentation.detail.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.openapisample.data.remote.DataResponse
+import com.example.openapisample.presentation.common.interactor.getErrorMsg
 import com.example.openapisample.presentation.common.interactor.model.Tweet
 import com.example.openapisample.presentation.common.viewmodel.MsgPriority
 import com.example.openapisample.presentation.detail.interactor.DetailInteractor
@@ -33,7 +34,7 @@ class DetailViewModel(
                     _event._message.postValue(Pair(MsgPriority.LOW, "검색 결과가 없습니다."))
                 }
                 is DataResponse.Fail -> {
-                    _event._message.postValue(Pair(MsgPriority.HIGH, result.errorMessage.orEmpty()))
+                    _event._message.postValue(Pair(MsgPriority.HIGH, result.getErrorMsg()))
                 }
             }
         }

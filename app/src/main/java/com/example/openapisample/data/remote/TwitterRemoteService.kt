@@ -21,9 +21,9 @@ interface TwitterRemoteService {
     @POST("oauth2/token")
     fun getTokenAsync(
         @Header("Authorization") key: String,
-        @Header("Content-Type") contentType: String,
-        @Body body: GrantTypeRequest
-    ) : Deferred<Response<GetTokenResponse>>
+        @Header("Content-Type") contentType: String = "application/x-www-form-urlencoded;charset=UTF-8",
+        @Body body: GrantTypeRequest = GrantTypeRequest("client_credentials")
+    ): Deferred<Response<GetTokenResponse>>
 
     /**
      * https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets.html
@@ -35,7 +35,7 @@ interface TwitterRemoteService {
         @Query("since_id") sinceId: Long?,
         @Query("max_id") maxId: Long?,
         @Query("include_entities") includeEntities: Boolean?
-    ) : Deferred<Response<SearchResponse>>
+    ): Deferred<Response<SearchResponse>>
 
     /**
      * https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-show-id
@@ -44,5 +44,5 @@ interface TwitterRemoteService {
     fun getDetailAsync(
         @Query("id") id: Long,
         @Query("include_entities") includeEntities: Boolean?
-    ) : Deferred<Response<Statuse>>
+    ): Deferred<Response<Statuse>>
 }

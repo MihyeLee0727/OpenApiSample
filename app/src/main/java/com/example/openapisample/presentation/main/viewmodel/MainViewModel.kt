@@ -24,7 +24,7 @@ class MainViewModel(
     }
 
     fun search() {
-        viewModelScope.launch(Dispatchers.Default + coroutineExceptionHandler) {
+        viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
             when (val result = interactor.search(viewState.searchKeyword)) {
                 is DataResponse.Success -> {
                     _event._searchResult.postValue(

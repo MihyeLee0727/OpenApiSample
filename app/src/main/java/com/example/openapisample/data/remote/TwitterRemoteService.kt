@@ -1,6 +1,5 @@
 package com.example.openapisample.data.remote
 
-import com.example.openapisample.data.request.GrantTypeRequest
 import com.example.openapisample.data.response.SearchResponse
 import com.example.openapisample.data.response.Statuse
 import com.example.openapisample.data.response.GetTokenResponse
@@ -19,10 +18,11 @@ interface TwitterRemoteService {
      * https://developer.twitter.com/en/docs/basics/authentication/api-reference/token
      */
     @POST("oauth2/token")
+    @FormUrlEncoded
     fun getTokenAsync(
         @Header("Authorization") key: String,
         @Header("Content-Type") contentType: String = "application/x-www-form-urlencoded;charset=UTF-8",
-        @Body body: GrantTypeRequest = GrantTypeRequest("client_credentials")
+        @Field("grant_type") type: String = "client_credentials"
     ): Deferred<Response<GetTokenResponse>>
 
     /**

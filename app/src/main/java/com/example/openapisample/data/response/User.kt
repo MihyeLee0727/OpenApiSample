@@ -21,9 +21,9 @@ class User(
     @SerializedName("created_at")
     val createdAt: String,
     @SerializedName("profile_banner_url")
-    val profileBannerUrl: String,
+    val profileBannerUrl: String?,
     @SerializedName("profile_image_url_https")
-    val profileImageUrlHttps: String,
+    val profileImageUrlHttps: String?,
     @SerializedName("default_profile")
     val defaultprofile: Boolean,
     @SerializedName("default_profile_image")

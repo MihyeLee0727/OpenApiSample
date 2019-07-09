@@ -22,12 +22,12 @@ class IntroViewModel(
     }
 
     fun requestToken() {
-        viewModelScope.launch(Dispatchers.Default + coroutineExceptionHandler) {
+        viewModelScope.launch(coroutineExceptionHandler) {
             var result: DataResponse<Token>? = null
-            val tokenJob = launch {
-                result = interactor.getToken("")  // TODO 개발자 등록 리뷰 끝나면 KEY 적용 해야 함
+            val tokenJob = launch(Dispatchers.IO) {
+                result = interactor.getToken(tokenManager.getBaseKey())
             }
-            val delayJob = launch {
+            val delayJob = launch(Dispatchers.Default) {
                 delay(1000)
             }
             joinAll(tokenJob, delayJob)
@@ -39,10 +39,10 @@ class IntroViewModel(
         when (result) {
             is DataResponse.Success -> {
                 saveToken(result.data.token)
-                _event._processDone.postValue(Unit)
+                _event._processDone.value = Unit
             }
             else -> {
-                _event._message.postValue(Pair(MsgPriority.HIGH, "인증에 실패했습니다"))
+                _event._message.value = Pair(MsgPriority.HIGH, "인증에 실패했습니다")
             }
         }
     }

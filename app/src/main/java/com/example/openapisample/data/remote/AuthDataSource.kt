@@ -19,9 +19,7 @@ class AuthDataSource {
 
     suspend fun getToken(req: GetTokenRequest): DataResponse<GetTokenResponse> {
         return service.getTokenAsync(
-            key = req.key,
-            contentType = req.contentType,
-            body = req.grantType
+            key = req.key
         ).awaitData()
     }
 }

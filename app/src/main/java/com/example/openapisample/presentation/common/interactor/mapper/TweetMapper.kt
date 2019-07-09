@@ -19,8 +19,8 @@ object TweetMapper {
         user = UserInfo(
             name = source.user.name,
             id = source.user.id,
-            profileImageUrl = source.user.profileImageUrlHttps,
-            profileBannerUrl = source.user.profileBannerUrl
+            profileImageUrl = source.user.profileImageUrlHttps.orEmpty(),
+            profileBannerUrl = source.user.profileBannerUrl.orEmpty()
         )
     )
 }

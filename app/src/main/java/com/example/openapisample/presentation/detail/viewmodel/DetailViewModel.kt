@@ -25,7 +25,7 @@ class DetailViewModel(
     }
 
     fun requestDetail() {
-        viewModelScope.launch(Dispatchers.Default + coroutineExceptionHandler) {
+        viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
             when (val result = interactor.getDetail(id)) {
                 is DataResponse.Success -> {
                     mapData(result.data)

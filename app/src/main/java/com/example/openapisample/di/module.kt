@@ -44,7 +44,7 @@ val mainSceneModule = module {
         MainInteractor(
             repo = get(
                 named(
-                    DINames.TwitterMockRepository.name
+                    DINames.TwitterRepository.name
                 )
             )
         )
@@ -61,7 +61,7 @@ val tweetDetailSceneModule = module {
         DetailInteractor(
             repo = get(
                 named(
-                    DINames.TwitterMockRepository.name
+                    DINames.TwitterRepository.name
                 )
             )
         )
@@ -79,7 +79,7 @@ val introSceneModule = module {
         IntroInteractor(
             repo = get(
                 named(
-                    DINames.TwitterMockRepository.name
+                    DINames.TwitterRepository.name
                 )
             )
         )

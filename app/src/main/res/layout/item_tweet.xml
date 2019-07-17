@@ -67,14 +67,23 @@
             android:ellipsize="end"
             android:maxLines="4"
             android:onClick="@{() -> viewModel.click()}"
-            android:padding="6dp"
             android:text="@{viewModel.contents}"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/image"
             app:layout_constraintTop_toTopOf="@id/image"
             app:layout_goneMarginStart="0dp"
+            app:layout_goneMarginTop="8dp"
             tools:text="test 가나다라 가나다라 가나다라마바사아 tteetesttest tteetetesttesttest tteetetesttesttest tteetetesttesttest tteetetesttetest" />
+
+        <View
+            android:id="@+id/textBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text" />
 
         <ImageView
             android:id="@+id/retweetIcon"
@@ -85,7 +94,7 @@
             android:src="@android:drawable/ic_menu_revert"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/image"
-            app:layout_constraintTop_toBottomOf="@id/text"
+            app:layout_constraintTop_toBottomOf="@id/textBottom"
             app:layout_constraintVertical_bias="1"
             app:layout_goneMarginStart="0dp"
             app:show="@{viewModel.retweetCount > 0}"
@@ -116,7 +125,7 @@
             android:tint="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/retweetCount"
-            app:layout_constraintTop_toBottomOf="@id/text"
+            app:layout_constraintTop_toBottomOf="@id/textBottom"
             app:layout_constraintVertical_bias="1"
             app:show="@{viewModel.favoriteCount > 0}" />
 

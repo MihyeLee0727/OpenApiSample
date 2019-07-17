@@ -11,10 +11,11 @@ import com.example.openapisample.presentation.common.interactor.model.Tweet
 class MainInteractor(
     private val repo: ITwitterRepository
 ) {
-    suspend fun search(keyword: String): DataResponse<List<Tweet>> {
+    suspend fun search(keyword: String, maxId: Long? = null): DataResponse<List<Tweet>> {
         val response = repo.search(
             req = SearchRequest(
-                query = keyword
+                query = keyword,
+                maxId = maxId
             )
         )
         return response.getOrNull()?.let {

@@ -9,7 +9,7 @@ import com.example.openapisample.presentation.main.viewmodel.item.TweetItemViewM
 
 interface IMainEvent : ICommonEvent {
     val searchResult: LiveData<List<TweetItemViewModel>>
-    val noResult: LiveData<Unit>
+    val readMoreResult: LiveData<List<TweetItemViewModel>>
     val click: LiveData<IClickModel>
 }
 
@@ -17,8 +17,8 @@ class MainEvent : IMainEvent {
     val _searchResult = MutableLiveData<List<TweetItemViewModel>>()
     override val searchResult: LiveData<List<TweetItemViewModel>> = _searchResult
 
-    val _noResult = MutableLiveData<Unit>()
-    override val noResult: LiveData<Unit> = _noResult
+    val _readMoreResult = MutableLiveData<List<TweetItemViewModel>>()
+    override val readMoreResult: LiveData<List<TweetItemViewModel>> = _readMoreResult
 
     val _message = MutableLiveData<Pair<MsgPriority, String>>()
     override val message: LiveData<Pair<MsgPriority, String>> = _message

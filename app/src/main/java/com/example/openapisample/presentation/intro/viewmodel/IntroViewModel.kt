@@ -18,13 +18,13 @@ class IntroViewModel(
     val event: IIntroEvent = _event
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        _event._message.postValue(Pair(MsgPriority.HIGH, throwable.message.orEmpty()))
+        _event._message.value = Pair(MsgPriority.HIGH, throwable.message.orEmpty())
     }
 
     fun requestToken() {
         viewModelScope.launch(coroutineExceptionHandler) {
             var result: DataResponse<Token>? = null
-            val tokenJob = launch(Dispatchers.IO) {
+            val tokenJob = launch {
                 result = interactor.getToken(tokenManager.getBaseKey())
             }
             val delayJob = launch {

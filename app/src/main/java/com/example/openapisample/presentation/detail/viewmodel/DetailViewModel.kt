@@ -8,7 +8,6 @@ import com.example.openapisample.presentation.common.interactor.model.Tweet
 import com.example.openapisample.presentation.common.viewmodel.MsgPriority
 import com.example.openapisample.presentation.detail.interactor.DetailInteractor
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class DetailViewModel(
@@ -21,20 +20,20 @@ class DetailViewModel(
     val event: IDetailEvent = _event
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        _event._message.postValue(Pair(MsgPriority.HIGH, throwable.message.orEmpty()))
+        _event._message.value = Pair(MsgPriority.HIGH, throwable.message.orEmpty())
     }
 
     fun requestDetail() {
-        viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
+        viewModelScope.launch(coroutineExceptionHandler) {
             when (val result = interactor.getDetail(id)) {
                 is DataResponse.Success -> {
                     mapData(result.data)
                 }
                 is DataResponse.Empty -> {
-                    _event._message.postValue(Pair(MsgPriority.LOW, "검색 결과가 없습니다."))
+                    _event._message.value = Pair(MsgPriority.LOW, "검색 결과가 없습니다.")
                 }
                 is DataResponse.Fail -> {
-                    _event._message.postValue(Pair(MsgPriority.HIGH, result.getErrorMsg()))
+                    _event._message.value = Pair(MsgPriority.HIGH, result.getErrorMsg())
                 }
             }
         }

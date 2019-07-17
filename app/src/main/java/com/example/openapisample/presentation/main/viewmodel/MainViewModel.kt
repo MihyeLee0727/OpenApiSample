@@ -23,26 +23,24 @@ class MainViewModel(
     private var maxId: Long? = null
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        _event._message.postValue(Pair(MsgPriority.HIGH, throwable.message.orEmpty()))
+        _event._message.value = Pair(MsgPriority.HIGH, throwable.message.orEmpty())
     }
 
     fun search() {
-        viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
+        viewModelScope.launch(coroutineExceptionHandler) {
             when (val result = interactor.search(viewState.searchKeyword)) {
                 is DataResponse.Success -> {
                     maxId = result.data.last().id
-                    _event._searchResult.postValue(
-                        TweetItemViewModelMapper.asItemViewModel(
-                            source = result.data,
-                            eventSender = this@MainViewModel
-                        )
+                    _event._searchResult.value = TweetItemViewModelMapper.asItemViewModel(
+                        source = result.data,
+                        eventSender = this@MainViewModel
                     )
                 }
                 is DataResponse.Empty -> {
-                    _event._message.postValue(Pair(MsgPriority.LOW, "검색 결과가 없습니다."))
+                    _event._message.value = Pair(MsgPriority.LOW, "검색 결과가 없습니다.")
                 }
                 is DataResponse.Fail -> {
-                    _event._message.postValue(Pair(MsgPriority.HIGH, result.getErrorMsg()))
+                    _event._message.value = Pair(MsgPriority.HIGH, result.getErrorMsg())
                 }
             }
         }
@@ -52,20 +50,18 @@ class MainViewModel(
     fun readMore() {
         if (readMoreJob != null) return
 
-        readMoreJob = viewModelScope.launch(Dispatchers.IO + coroutineExceptionHandler) {
+        readMoreJob = viewModelScope.launch(coroutineExceptionHandler) {
             when (val result =
                 interactor.search(keyword = viewState.searchKeyword, maxId = maxId?.minus(1))) {
                 is DataResponse.Success -> {
                     maxId = result.data.last().id
-                    _event._readMoreResult.postValue(
-                        TweetItemViewModelMapper.asItemViewModel(
-                            source = result.data,
-                            eventSender = this@MainViewModel
-                        )
+                    _event._readMoreResult.value = TweetItemViewModelMapper.asItemViewModel(
+                        source = result.data,
+                        eventSender = this@MainViewModel
                     )
                 }
                 is DataResponse.Fail -> {
-                    _event._message.postValue(Pair(MsgPriority.HIGH, result.getErrorMsg()))
+                    _event._message.value = Pair(MsgPriority.HIGH, result.getErrorMsg())
                 }
             }
             readMoreJob = null

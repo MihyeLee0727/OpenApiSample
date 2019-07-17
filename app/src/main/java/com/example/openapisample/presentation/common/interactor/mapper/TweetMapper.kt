@@ -12,6 +12,7 @@ object TweetMapper {
 
     fun asTweet(source: Statuse) = Tweet(
         id = source.id,
+        createdAt = source.createdAt,
         favoriteCount = source.favoriteCount,
         retweetCount = source.retweetCount,
         imageUrl = source.entities.media?.firstOrNull()?.mediaUrlHttps.orEmpty(),

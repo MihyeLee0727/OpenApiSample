@@ -1,6 +1,7 @@
 package com.example.openapisample.data.response
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 /**
  * https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/tweet-object
@@ -8,7 +9,7 @@ import com.google.gson.annotations.SerializedName
 class Statuse(
     val id: Long,
     @SerializedName("created_at")
-    val createdAt: String,
+    val createdAt: Date,
     val entities: Entities,
     @SerializedName("favorite_count")
     val favoriteCount: Int,

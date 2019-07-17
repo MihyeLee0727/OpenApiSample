@@ -27,7 +27,7 @@ class IntroViewModel(
             val tokenJob = launch(Dispatchers.IO) {
                 result = interactor.getToken(tokenManager.getBaseKey())
             }
-            val delayJob = launch(Dispatchers.Default) {
+            val delayJob = launch {
                 delay(1000)
             }
             joinAll(tokenJob, delayJob)

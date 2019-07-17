@@ -85,6 +85,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text" />
 
+        <TextView
+            android:id="@+id/createdAt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:text="@{viewModel.createdAt}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textBottom"
+            app:layout_constraintVertical_bias="1"
+            tools:text="2019/07/17"
+            tools:visibility="visible" />
+
         <ImageView
             android:id="@+id/retweetIcon"
             android:layout_width="18dp"

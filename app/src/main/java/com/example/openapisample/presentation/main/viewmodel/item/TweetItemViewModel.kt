@@ -12,6 +12,7 @@ class TweetItemViewModel(
     val userName: String,
     val retweetCount: Int,
     val favoriteCount: Int,
+    val createdAt: String,
     private val eventSender: IEventSender
 ) {
     val hasImage = imageUrl.isNotBlank()

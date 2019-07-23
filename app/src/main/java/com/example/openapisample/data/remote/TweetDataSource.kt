@@ -4,11 +4,13 @@ import com.example.openapisample.data.request.SearchRequest
 import com.example.openapisample.data.request.GetDetailRequest
 import com.example.openapisample.data.response.SearchResponse
 import com.example.openapisample.data.response.Statuse
+import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 class TweetDataSource(
     private val tokenManager: IRemoteTokenManager
@@ -26,10 +28,13 @@ class TweetDataSource(
             .addInterceptor(authInterceptor)
             .build()
 
+        val gsonBuilder =
+            GsonBuilder().registerTypeAdapter(Date::class.java, GsonUtcDateFormatAdapter())
+
         Retrofit.Builder()
             .baseUrl("https://api.twitter.com/")
             .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gsonBuilder.create()))
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
             .create(TwitterRemoteService::class.java)

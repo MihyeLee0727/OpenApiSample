@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.openapisample.R
 import com.example.openapisample.databinding.ActivityMainBinding
 import com.example.openapisample.presentation.IClickModel
@@ -51,6 +52,16 @@ class MainActivity : AppCompatActivity() {
                     LinearLayoutManager.VERTICAL
                 )
             )
+            list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    when (newState) {
+                        RecyclerView.SCROLL_STATE_DRAGGING -> {
+                            checkReadMore()
+                        }
+                    }
+                }
+            })
             editSearchBox.setOnEditorActionListener { v, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     hideKeyboard(v)
@@ -62,12 +73,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun checkReadMore() {
+        (binding.list.layoutManager as? LinearLayoutManager)?.let {
+            val lastItem = it.findLastVisibleItemPosition()
+            if (lastItem >= adapter.itemCount - 4) {
+                this@MainActivity.viewModel.readMore()
+            }
+        }
+    }
+
     private fun initObserver() {
         observe(viewModel.event.click) {
             handleClick(it)
         }
         observe(viewModel.event.searchResult) {
             adapter.clear()
+            adapter.addAll(it)
+        }
+        observe(viewModel.event.readMoreResult) {
             adapter.addAll(it)
         }
         observe(viewModel.event.message) {

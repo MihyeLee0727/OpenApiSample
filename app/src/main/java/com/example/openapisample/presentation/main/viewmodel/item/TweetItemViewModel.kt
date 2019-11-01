@@ -4,7 +4,7 @@ import com.example.openapisample.presentation.common.interactor.model.Tweet
 import com.example.openapisample.presentation.IClickModel
 import com.example.openapisample.presentation.IEventSender
 
-class TweetItemViewModel(
+data class TweetItemViewModel(
     val data: Tweet,
     val imageUrl: String,
     val contents: String,

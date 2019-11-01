@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="?attr/selectableItemBackground"
+    tools:ignore="ContentDescription"
+    tools:layout_height="wrap_content"
+    tools:layout_width="match_parent"
+    tools:padding="16dp"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <ImageView
+        android:id="@+id/profile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@android:drawable/ic_menu_today" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:maxLines="2"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/profile"
+        app:layout_constraintTop_toTopOf="@id/profile"
+        tools:text="dfdfdfdfdfdfdfdfdfdlkjfsl" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profile"
+        tools:src="@android:drawable/gallery_thumb"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:autoLink="web"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:ellipsize="end"
+        android:maxLines="4"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintTop_toTopOf="@id/image"
+        app:layout_goneMarginStart="0dp"
+        app:layout_goneMarginTop="8dp"
+        tools:text="test 가나다라 가나다라 가나다라마바사아 tteetesttest tteetetesttesttest tteetetesttesttest tteetetesttesttest tteetetesttetest" />
+
+    <View
+        android:id="@+id/textBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text" />
+
+    <TextView
+        android:id="@+id/createdAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textBottom"
+        app:layout_constraintVertical_bias="1"
+        tools:text="2019/07/17"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/retweetIcon"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="6dp"
+        android:src="@android:drawable/ic_menu_revert"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@id/textBottom"
+        app:layout_constraintVertical_bias="1"
+        app:layout_goneMarginStart="0dp"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/retweetCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:drawablePadding="8dp"
+        android:includeFontPadding="false"
+        app:layout_constraintBottom_toBottomOf="@id/retweetIcon"
+        app:layout_constraintStart_toEndOf="@id/retweetIcon"
+        app:layout_constraintTop_toTopOf="@id/retweetIcon"
+        tools:text="222"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/favoriteIcon"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="6dp"
+        android:src="@android:drawable/star_off"
+        android:tint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/retweetCount"
+        app:layout_constraintTop_toBottomOf="@id/textBottom"
+        app:layout_constraintVertical_bias="1" />
+
+    <TextView
+        android:id="@+id/favoriteCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:includeFontPadding="false"
+        app:layout_constraintBottom_toBottomOf="@id/favoriteIcon"
+        app:layout_constraintStart_toEndOf="@id/favoriteIcon"
+        app:layout_constraintTop_toTopOf="@id/favoriteIcon"
+        tools:text="1134" />
+
+</merge>

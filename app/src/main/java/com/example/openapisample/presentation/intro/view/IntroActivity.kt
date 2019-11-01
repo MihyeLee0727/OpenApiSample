@@ -11,6 +11,7 @@ import com.example.openapisample.presentation.common.viewmodel.MsgPriority
 import com.example.openapisample.presentation.intro.viewmodel.IntroViewModel
 import com.example.openapisample.presentation.main.view.MainActivity
 import com.example.openapisample.presentation.observe
+import com.example.openapisample.presentation.test.TestMainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class IntroActivity : AppCompatActivity() {
@@ -30,7 +31,8 @@ class IntroActivity : AppCompatActivity() {
 
     private fun initObserver() {
         observe(viewModel.event.processDone) {
-            MainActivity.start(this)
+//            MainActivity.start(this)
+            TestMainActivity.start(this)
             finish()
         }
         observe(viewModel.event.message) {
